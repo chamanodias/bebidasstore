@@ -1,9 +1,5 @@
 [# bebidasstore
 🍷 Plataforma de E-commerce de Bebidas - Django | Projeto Acadêmico
-](https://img.shields.io/badge/Django-4.2.7-green.svg
-https://img.shields.io/badge/PostgreSQL-13-blue.svg
-https://img.shields.io/badge/Azure-Deploy-blue.svg
-https://img.shields.io/badge/Design-Responsive-orange.svg
 
 BebidasStore é uma aplicação web completa de e-commerce especializada na venda de bebidas, desenvolvida em Django com PostgreSQL. A plataforma oferece uma experiência moderna de compra online com design responsivo e funcionalidades completas.
 
