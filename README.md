@@ -1,3 +1,6 @@
+
+Segue foto do quadro Trello 
+
 <img width="1913" height="887" alt="Captura de tela 2025-09-05 102421" src="https://github.com/user-attachments/assets/067390bb-2160-460c-bbfa-c9481346278b" />
 [# bebidasstore
 🍷 Plataforma de E-commerce de Bebidas - Django | Projeto Acadêmico
