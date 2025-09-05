@@ -25,3 +25,25 @@ Gestão de Produtos - Controle completo do catálogo com imagens
 Gestão de Pedidos - Controle de status e acompanhamento de vendas
 
 Relatórios - Análise de vendas e desempenho)
+
+
+📋 Histórias de Usuário Implementadas
+✅ Visualização de Produtos em Destaque - Página inicial com produtos destacados
+
+✅ Busca e Filtragem de Produtos - Sistema avançado de busca e filtros
+
+✅ Detalhamento de Produto - Página completa de informações do produto
+
+✅ Cadastro de Usuário - Formulário de registro com validação
+
+✅ Autenticação de Usuário - Sistema de login seguro
+
+✅ Gerenciamento do Carrinho - Adicionar produtos ao carrinho
+
+✅ Visualização e Edição do Carrinho - Gerenciar itens do carrinho
+
+✅ Finalização de Pedido - Processo completo de checkout
+
+✅ Acompanhamento de Pedidos - Histórico de compras do cliente
+
+✅ Detalhamento de Pedido - Visualização completa do pedido
