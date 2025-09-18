@@ -1,4 +1,4 @@
-<img width="1874" height="807" alt="image" src="https://github.com/user-attachments/assets/f6be1394-0e20-487a-bbbd-748f729ded6f" />Protótipo no Figma:
+Protótipo no Figma:
 
 <img width="1441" height="762" alt="image" src="https://github.com/user-attachments/assets/fe44522d-e753-4e8b-a6f0-2d855366eef3" />
 
