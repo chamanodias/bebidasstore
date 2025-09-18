@@ -372,106 +372,28 @@ python manage.py runserver
 
 ## 🐛 Issues/Bugs Conhecidos
 
-Para rastrear bugs e funcionalidades, utilizamos o sistema de Issues do GitHub:
-https://github.com/chamanodias/bebidasstore/issues
+Sistema de Issues do GitHub configurado para rastreamento de bugs e funcionalidades.
 
-## 📱 Screenshots das Telas
+## 📱 Screenshots e Screencast
 
-> **Nota**: Para visualizar as telas reais, execute o projeto localmente seguindo as instruções de instalação.
+### Como Visualizar as Funcionalidades
+**Execute o projeto localmente para ver todas as telas funcionando:**
 
-### Como Visualizar as Telas
-1. **Execute o servidor**: `python manage.py runserver`
-2. **Acesse**: http://127.0.0.1:8000/
-3. **Navegue pelas funcionalidades**:
-   - **Página Inicial**: http://127.0.0.1:8000/ - Banner hero + produtos em destaque
-   - **Lista de Produtos**: http://127.0.0.1:8000/produtos/ - Catálogo com filtros
-   - **Detalhes do Produto**: Clique em qualquer produto - Informações completas
-   - **Cadastro**: http://127.0.0.1:8000/cadastro/ - Formulário de registro
-   - **Login**: http://127.0.0.1:8000/accounts/login/ - Autenticação
-   - **Carrinho**: http://127.0.0.1:8000/carrinho/ - Gestão de itens
-   - **Admin**: http://127.0.0.1:8000/admin/ - admin/admin123
-
-### Funcionalidades Visuais Implementadas
-- ✅ **Design Responsivo** com Bootstrap 5.3
-- ✅ **Interface Moderna** com ícones Bootstrap Icons
-- ✅ **Paleta de Cores Consistente** (roxo #7C3AED como primária)
-- ✅ **Animações CSS** em hover dos produtos
-- ✅ **Navegação Intuitiva** com breadcrumbs
-- ✅ **Formulários Validados** com feedback visual
-- ✅ **Cards Responsivos** para produtos
-- ✅ **Progress Bars** para status de pedidos
-
-## 🎬 Screencast do Protótipo
-
-### Demonstração Completa das Funcionalidades
-
-**Para criar um screencast demonstrando o protótipo:**
-
-1. **Inicie o servidor** e acesse http://127.0.0.1:8000/
-2. **Grave a tela** seguindo este roteiro:
-
-#### **Roteiro do Screencast** (5-7 minutos):
-```
-00:00 - Página Inicial
-- Mostrar banner hero e produtos em destaque
-- Demonstrar navegação por categorias
-- Testar sistema de busca
-
-01:30 - Catálogo de Produtos
-- Navegar pela lista completa
-- Aplicar filtros (tipo de bebida, categoria)
-- Mostrar resultados da busca
-
-02:30 - Detalhes do Produto
-- Clicar em um produto em destaque
-- Mostrar informações completas
-- Demonstrar seleção de quantidade
-- Adicionar ao carrinho
-
-03:30 - Cadastro e Login
-- Acessar página de cadastro
-- Preencher formulário de registro
-- Fazer login com usuário criado
-
-04:30 - Carrinho de Compras
-- Visualizar itens adicionados
-- Alterar quantidades
-- Mostrar cálculo de totais
-
-05:30 - Processo de Checkout
-- Preencher dados de entrega
-- Confirmar pedido
-- Visualizar página de confirmação
-
-06:30 - Acompanhamento
-- Acessar histórico de pedidos
-- Mostrar detalhes do pedido
-- Demonstrar status tracking
+```bash
+python manage.py runserver
+# Acesse: http://127.0.0.1:8000/
 ```
 
-#### **Narração/Legendas Sugeridas**:
-- **"Bem-vindos ao BebidasStore, uma plataforma completa de e-commerce"**
-- **"Aqui temos produtos em destaque e navegação por categorias"**
-- **"O sistema de busca e filtros permite encontrar produtos facilmente"**
-- **"Cada produto tem informações detalhadas e opções de quantidade"**
-- **"O processo de cadastro é simples e intuitivo"**
-- **"O carrinho persiste entre sessões e calcula totais automaticamente"**
-- **"O checkout é seguro com validação de dados"**
-- **"Usuarios podem acompanhar seus pedidos com status em tempo real"**
+### Screencast do Protótipo
+**Roteiro para demonstração (5-7 minutos):**
+1. Página inicial com produtos em destaque
+2. Sistema de busca e filtros
+3. Detalhamento do produto
+4. Cadastro e login de usuário
+5. Carrinho de compras
+6. Processo de checkout
+7. Acompanhamento de pedidos
 
-### Ferramentas Recomendadas para Screencast:
-- **Windows**: Xbox Game Bar (Win + G) ou OBS Studio
-- **Edição**: OpenShot, DaVinci Resolve (gratuitos)
-- **Duração**: 5-7 minutos
-- **Resolução**: 1280x720 (HD) mínimo
-
-## 🤝 Contribuição
-
-1. Faça um Fork do projeto
-2. Crie uma branch para sua funcionalidade (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add: Amazing Feature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
 
 ## 📝 Licença
 
