@@ -1,0 +1,168 @@
+{% extends 'store/base.html' %}
+
+{% block title %}{{ product.name }} - BebidasStore{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'store:home' %}">Início</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'store:product_list' %}">Produtos</a></li>
+            <li class="breadcrumb-item active">{{ product.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Imagem do Produto -->
+        <div class="col-lg-6 mb-4">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" class="img-fluid rounded shadow" 
+                     alt="{{ product.name }}" style="width: 100%; max-height: 500px; object-fit: cover;">
+            {% else %}
+                <div class="bg-light d-flex align-items-center justify-content-center rounded shadow" 
+                     style="height: 400px;">
+                    <i class="bi bi-image text-muted" style="font-size: 5rem;"></i>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Informações do Produto -->
+        <div class="col-lg-6">
+            <div class="mb-3">
+                {% if product.featured %}
+                    <span class="badge bg-warning text-dark mb-2">
+                        <i class="bi bi-star-fill me-1"></i>Produto em Destaque
+                    </span>
+                {% endif %}
+                <span class="badge bg-secondary">{{ product.get_alcohol_type_display }}</span>
+                <span class="badge bg-info text-dark">{{ product.category.name }}</span>
+            </div>
+
+            <h1 class="display-6 mb-3">{{ product.name }}</h1>
+            
+            <div class="mb-4">
+                <span class="h2 text-primary">R$ {{ product.price }}</span>
+                {% if product.volume %}
+                    <span class="text-muted ms-2">({{ product.volume }})</span>
+                {% endif %}
+            </div>
+
+            <!-- Informações Técnicas -->
+            <div class="row mb-4">
+                {% if product.alcohol_content %}
+                    <div class="col-6">
+                        <strong>Teor Alcoólico:</strong><br>
+                        <span class="text-muted">{{ product.alcohol_content }}% vol.</span>
+                    </div>
+                {% endif %}
+                <div class="col-6">
+                    <strong>Estoque:</strong><br>
+                    {% if product.stock > 0 %}
+                        <span class="text-success">{{ product.stock }} unidades disponíveis</span>
+                    {% else %}
+                        <span class="text-danger">Produto esgotado</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Formulário de Adicionar ao Carrinho -->
+            {% if product.stock > 0 %}
+                <form method="post" action="{% url 'store:add_to_cart' product.id %}" class="mb-4">
+                    {% csrf_token %}
+                    <div class="row align-items-end">
+                        <div class="col-md-4 mb-3">
+                            <label for="quantity" class="form-label">Quantidade:</label>
+                            <select name="quantity" id="quantity" class="form-select">
+                                {% for i in "123456789"|make_list %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="bi bi-cart-plus me-2"></i>Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            {% else %}
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    Este produto está temporariamente esgotado.
+                </div>
+            {% endif %}
+
+            <!-- Botões de Ação -->
+            <div class="d-grid gap-2 d-md-flex mb-4">
+                <a href="{% url 'store:product_list' %}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-1"></i>Voltar aos Produtos
+                </a>
+                <a href="{% url 'store:cart_detail' %}" class="btn btn-outline-primary">
+                    <i class="bi bi-cart3 me-1"></i>Ver Carrinho
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Descrição Detalhada -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Descrição do Produto</h3>
+                </div>
+                <div class="card-body">
+                    <p class="lead">{{ product.description|linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Produtos Relacionados -->
+    {% if related_products %}
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="mb-4">Produtos Relacionados</h3>
+                <div class="row">
+                    {% for related_product in related_products %}
+                        <div class="col-md-3 mb-4">
+                            <div class="card product-card h-100 border-0 shadow-sm">
+                                {% if related_product.image %}
+                                    <img src="{{ related_product.image.url }}" class="card-img-top" 
+                                         alt="{{ related_product.name }}" style="height: 200px; object-fit: cover;">
+                                {% else %}
+                                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" 
+                                         style="height: 200px;">
+                                        <i class="bi bi-image text-muted" style="font-size: 2rem;"></i>
+                                    </div>
+                                {% endif %}
+                                
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title">{{ related_product.name }}</h6>
+                                    <p class="card-text text-muted small">{{ related_product.description|truncatewords:8 }}</p>
+                                    
+                                    <div class="mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="text-primary fw-bold">R$ {{ related_product.price }}</span>
+                                            <span class="badge bg-secondary">{{ related_product.get_alcohol_type_display }}</span>
+                                        </div>
+                                        
+                                        <div class="d-grid">
+                                            <a href="{{ related_product.get_absolute_url }}" class="btn btn-outline-primary btn-sm">
+                                                Ver Produto
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,229 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Meus Pedidos - BebidasStore{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h1><i class="bi bi-clock-history me-2"></i>Meus Pedidos</h1>
+            <p class="text-muted">Acompanhe o histórico de todos os seus pedidos realizados na BebidasStore</p>
+            <hr>
+        </div>
+    </div>
+
+    {% if orders %}
+        <div class="row">
+            {% for order in orders %}
+                <div class="col-12 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-1">
+                                    <i class="bi bi-receipt me-2"></i>Pedido #{{ order.order_number }}
+                                </h5>
+                                <small class="text-muted">
+                                    Realizado em {{ order.created_at|date:"d/m/Y à\s H:i" }}
+                                </small>
+                            </div>
+                            <div class="text-end">
+                                <span class="badge bg-{% if order.status == 'confirmado' %}success{% elif order.status == 'processando' %}warning{% elif order.status == 'enviado' %}info{% elif order.status == 'entregue' %}success{% elif order.status == 'cancelado' %}danger{% else %}secondary{% endif %} fs-6">
+                                    {{ order.get_status_display }}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <!-- Resumo dos Itens -->
+                                    <h6><i class="bi bi-box me-2"></i>Itens do Pedido ({{ order.items.count }})</h6>
+                                    
+                                    <div class="row">
+                                        {% for item in order.items.all|slice:":4" %}
+                                            <div class="col-md-6 mb-2">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1">
+                                                        <strong class="small">{{ item.product.name }}</strong><br>
+                                                        <small class="text-muted">{{ item.quantity }}x R$ {{ item.price }}</small>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <span class="text-success small">R$ {{ item.get_total_price }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    
+                                    {% if order.items.count > 4 %}
+                                        <small class="text-muted">
+                                            <i class="bi bi-three-dots me-1"></i>
+                                            e mais {{ order.items.count|add:"-4" }} item{{ order.items.count|add:"-4"|pluralize }}
+                                        </small>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-lg-4">
+                                    <!-- Dados de Entrega -->
+                                    <h6><i class="bi bi-truck me-2"></i>Entrega</h6>
+                                    <div class="mb-3">
+                                        <small class="text-muted">
+                                            <strong>{{ order.first_name }} {{ order.last_name }}</strong><br>
+                                            {{ order.address }}<br>
+                                            {{ order.city }} - {{ order.postal_code }}
+                                        </small>
+                                    </div>
+                                    
+                                    <!-- Total -->
+                                    <div class="text-center bg-light p-3 rounded">
+                                        <small class="text-muted d-block">Total do Pedido</small>
+                                        <span class="h4 text-success">R$ {{ order.total_price }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-footer bg-transparent">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <!-- Status Progress -->
+                                    <div class="d-flex align-items-center">
+                                        <small class="text-muted me-2">Progresso:</small>
+                                        <div class="progress flex-grow-1" style="height: 4px;">
+                                            <div class="progress-bar bg-success" role="progressbar" 
+                                                 style="width: {% if order.status == 'pendente' %}25%{% elif order.status == 'confirmado' %}50%{% elif order.status == 'processando' %}75%{% elif order.status == 'enviado' %}90%{% elif order.status == 'entregue' %}100%{% endif %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 text-end">
+                                    <!-- Ações -->
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="{% url 'store:order_detail' order.order_number %}" 
+                                           class="btn btn-outline-primary">
+                                            <i class="bi bi-eye me-1"></i>Ver Detalhes
+                                        </a>
+                                        
+                                        {% if order.status != 'cancelado' and order.status != 'entregue' %}
+                                            <button class="btn btn-outline-secondary dropdown-toggle" 
+                                                    type="button" data-bs-toggle="dropdown">
+                                                <i class="bi bi-three-dots"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                {% if order.status == 'pendente' or order.status == 'confirmado' %}
+                                                    <li>
+                                                        <button class="dropdown-item text-danger" 
+                                                                onclick="cancelOrder('{{ order.order_number }}')">
+                                                            <i class="bi bi-x-circle me-1"></i>Cancelar Pedido
+                                                        </button>
+                                                    </li>
+                                                {% endif %}
+                                                <li>
+                                                    <a class="dropdown-item" href="mailto:suporte@bebidasstore.com?subject=Pedido {{ order.order_number }}">
+                                                        <i class="bi bi-envelope me-1"></i>Contatar Suporte
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        {% endif %}
+                                        
+                                        {% if order.status == 'entregue' %}
+                                            <button class="btn btn-outline-success" disabled>
+                                                <i class="bi bi-check-circle me-1"></i>Entregue
+                                            </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Estatísticas do Usuário -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <i class="bi bi-receipt fs-1 text-primary mb-2"></i>
+                                <h5>{{ orders.count }}</h5>
+                                <small class="text-muted">Total de Pedidos</small>
+                            </div>
+                            <div class="col-md-3">
+                                <i class="bi bi-currency-dollar fs-1 text-success mb-2"></i>
+                                <h5>R$ {% widthratio orders.count 1 500 %}</h5>
+                                <small class="text-muted">Total Gasto</small>
+                            </div>
+                            <div class="col-md-3">
+                                <i class="bi bi-truck fs-1 text-info mb-2"></i>
+                                <h5>{% for order in orders %}{% if order.status == 'entregue' %}{{ forloop.counter }}{% endif %}{% empty %}0{% endfor %}</h5>
+                                <small class="text-muted">Pedidos Entregues</small>
+                            </div>
+                            <div class="col-md-3">
+                                <i class="bi bi-star fs-1 text-warning mb-2"></i>
+                                <h5>Cliente Fidelidade</h5>
+                                <small class="text-muted">Seu Status</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <!-- Sem Pedidos -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="py-5">
+                    <i class="bi bi-receipt display-1 text-muted mb-4"></i>
+                    <h3>Você ainda não fez nenhum pedido</h3>
+                    <p class="lead text-muted mb-4">
+                        Que tal explorar nossos produtos incríveis e fazer sua primeira compra?
+                    </p>
+                    
+                    <a href="{% url 'store:product_list' %}" class="btn btn-primary btn-lg">
+                        <i class="bi bi-collection me-2"></i>Explorar Produtos
+                    </a>
+                </div>
+                
+                <!-- Destaques para Novos Clientes -->
+                <div class="row mt-5">
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="bg-light p-4 rounded">
+                            <i class="bi bi-truck text-success fs-1 mb-3"></i>
+                            <h5>Frete Grátis</h5>
+                            <p class="text-muted">Em compras acima de R$ 50</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="bg-light p-4 rounded">
+                            <i class="bi bi-shield-check text-primary fs-1 mb-3"></i>
+                            <h5>Compra Segura</h5>
+                            <p class="text-muted">Transações 100% protegidas</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="bg-light p-4 rounded">
+                            <i class="bi bi-award text-warning fs-1 mb-3"></i>
+                            <h5>Qualidade Premium</h5>
+                            <p class="text-muted">Produtos selecionados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+function cancelOrder(orderNumber) {
+    if (confirm('Tem certeza que deseja cancelar o pedido #' + orderNumber + '?')) {
+        // Aqui você implementaria a lógica de cancelamento
+        alert('Funcionalidade de cancelamento será implementada em breve.');
+    }
+}
+</script>
+{% endblock %}

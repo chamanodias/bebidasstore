@@ -1,0 +1,89 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Login - BebidasStore{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h3 class="mb-0">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Entrar
+                    </h3>
+                    <p class="mb-0">Acesse sua conta BebidasStore</p>
+                </div>
+                
+                <div class="card-body p-4">
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            <strong>Erro ao fazer login:</strong>
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <br>{{ error }}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.username.id_for_label }}" class="form-label">
+                                <i class="bi bi-person me-1"></i>Nome de usuário
+                            </label>
+                            <input type="text" class="form-control{% if form.username.errors %} is-invalid{% endif %}" 
+                                   id="{{ form.username.id_for_label }}" 
+                                   name="{{ form.username.name }}" 
+                                   value="{{ form.username.value|default:'' }}"
+                                   placeholder="Digite seu nome de usuário"
+                                   required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="{{ form.password.id_for_label }}" class="form-label">
+                                <i class="bi bi-lock me-1"></i>Senha
+                            </label>
+                            <input type="password" class="form-control{% if form.password.errors %} is-invalid{% endif %}" 
+                                   id="{{ form.password.id_for_label }}" 
+                                   name="{{ form.password.name }}"
+                                   placeholder="Digite sua senha"
+                                   required>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>Entrar
+                            </button>
+                        </div>
+
+                        <input type="hidden" name="next" value="{{ next }}">
+                    </form>
+                </div>
+                
+                <div class="card-footer text-center py-3">
+                    <p class="mb-0">
+                        Ainda não tem uma conta? 
+                        <a href="{% url 'store:register' %}" class="text-primary text-decoration-none fw-bold">
+                            Cadastre-se aqui
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Informações sobre a conta -->
+            <div class="text-center mt-4">
+                <div class="bg-light p-4 rounded">
+                    <h5><i class="bi bi-shield-check text-success me-2"></i>Login Seguro</h5>
+                    <p class="text-muted mb-0">
+                        Suas informações estão protegidas com criptografia de ponta.<br>
+                        Aproveite todos os benefícios de ter uma conta na BebidasStore.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
