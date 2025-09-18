@@ -2,7 +2,11 @@ Protótipo no Figma:
 
 <img width="1441" height="762" alt="image" src="https://github.com/user-attachments/assets/fe44522d-e753-4e8b-a6f0-2d855366eef3" />
 
-Protótipo no Django:
+Quadro do Trello:
+
+
+<img width="1874" height="807" alt="image" src="https://github.com/user-attachments/assets/25c2422a-1b54-4055-bea3-7c5a62dcf947" />
+
 
 
 
