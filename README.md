@@ -473,13 +473,9 @@ https://github.com/chamanodias/bebidasstore/issues
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
-## 📝 Licença
 
-Este projeto é um trabalho acadêmico desenvolvido para fins educacionais.
 
-## 👨‍💻 Autor
 
-**Lucas** - [chamanodias](https://github.com/chamanodias)
 
 ---
 
