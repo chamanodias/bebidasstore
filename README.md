@@ -377,23 +377,93 @@ https://github.com/chamanodias/bebidasstore/issues
 
 ## 📱 Screenshots das Telas
 
-### Página Inicial
-![Home](docs/screenshots/home.png)
+> **Nota**: Para visualizar as telas reais, execute o projeto localmente seguindo as instruções de instalação.
 
-### Lista de Produtos  
-![Products](docs/screenshots/products.png)
+### Como Visualizar as Telas
+1. **Execute o servidor**: `python manage.py runserver`
+2. **Acesse**: http://127.0.0.1:8000/
+3. **Navegue pelas funcionalidades**:
+   - **Página Inicial**: http://127.0.0.1:8000/ - Banner hero + produtos em destaque
+   - **Lista de Produtos**: http://127.0.0.1:8000/produtos/ - Catálogo com filtros
+   - **Detalhes do Produto**: Clique em qualquer produto - Informações completas
+   - **Cadastro**: http://127.0.0.1:8000/cadastro/ - Formulário de registro
+   - **Login**: http://127.0.0.1:8000/accounts/login/ - Autenticação
+   - **Carrinho**: http://127.0.0.1:8000/carrinho/ - Gestão de itens
+   - **Admin**: http://127.0.0.1:8000/admin/ - admin/admin123
 
-### Detalhes do Produto
-![Product Detail](docs/screenshots/product_detail.png)
+### Funcionalidades Visuais Implementadas
+- ✅ **Design Responsivo** com Bootstrap 5.3
+- ✅ **Interface Moderna** com ícones Bootstrap Icons
+- ✅ **Paleta de Cores Consistente** (roxo #7C3AED como primária)
+- ✅ **Animações CSS** em hover dos produtos
+- ✅ **Navegação Intuitiva** com breadcrumbs
+- ✅ **Formulários Validados** com feedback visual
+- ✅ **Cards Responsivos** para produtos
+- ✅ **Progress Bars** para status de pedidos
 
-### Carrinho
-![Cart](docs/screenshots/cart.png)
+## 🎬 Screencast do Protótipo
 
-### Login
-![Login](docs/screenshots/login.png)
+### Demonstração Completa das Funcionalidades
 
-### Cadastro
-![Register](docs/screenshots/register.png)
+**Para criar um screencast demonstrando o protótipo:**
+
+1. **Inicie o servidor** e acesse http://127.0.0.1:8000/
+2. **Grave a tela** seguindo este roteiro:
+
+#### **Roteiro do Screencast** (5-7 minutos):
+```
+00:00 - Página Inicial
+- Mostrar banner hero e produtos em destaque
+- Demonstrar navegação por categorias
+- Testar sistema de busca
+
+01:30 - Catálogo de Produtos
+- Navegar pela lista completa
+- Aplicar filtros (tipo de bebida, categoria)
+- Mostrar resultados da busca
+
+02:30 - Detalhes do Produto
+- Clicar em um produto em destaque
+- Mostrar informações completas
+- Demonstrar seleção de quantidade
+- Adicionar ao carrinho
+
+03:30 - Cadastro e Login
+- Acessar página de cadastro
+- Preencher formulário de registro
+- Fazer login com usuário criado
+
+04:30 - Carrinho de Compras
+- Visualizar itens adicionados
+- Alterar quantidades
+- Mostrar cálculo de totais
+
+05:30 - Processo de Checkout
+- Preencher dados de entrega
+- Confirmar pedido
+- Visualizar página de confirmação
+
+06:30 - Acompanhamento
+- Acessar histórico de pedidos
+- Mostrar detalhes do pedido
+- Demonstrar status tracking
+```
+
+#### **Narração/Legendas Sugeridas**:
+- **"Bem-vindos ao BebidasStore, uma plataforma completa de e-commerce"**
+- **"Aqui temos produtos em destaque e navegação por categorias"**
+- **"O sistema de busca e filtros permite encontrar produtos facilmente"**
+- **"Cada produto tem informações detalhadas e opções de quantidade"**
+- **"O processo de cadastro é simples e intuitivo"**
+- **"O carrinho persiste entre sessões e calcula totais automaticamente"**
+- **"O checkout é seguro com validação de dados"**
+- **"Usuarios podem acompanhar seus pedidos com status em tempo real"**
+
+### Ferramentas Recomendadas para Screencast:
+- **Windows**: Xbox Game Bar (Win + G) ou OBS Studio
+- **Edição**: OpenShot, DaVinci Resolve (gratuitos)
+- **Duração**: 5-7 minutos
+- **Resolução**: 1280x720 (HD) mínimo
 
 ## 🤝 Contribuição
 
