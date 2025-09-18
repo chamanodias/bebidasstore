@@ -1,13 +1,15 @@
-Protótipo no Figma:
+<img width="1874" height="807" alt="image" src="https://github.com/user-attachments/assets/f6be1394-0e20-487a-bbbd-748f729ded6f" />Protótipo no Figma:
 
 <img width="1441" height="762" alt="image" src="https://github.com/user-attachments/assets/fe44522d-e753-4e8b-a6f0-2d855366eef3" />
+
+Link: https://www.figma.com/make/EQqmLPGEOOzRTAWDJGEbfO/Lo-Fi-Prototype-and-Storyboards?node-id=0-1&t=EOYvobnlCaKhZd0J-1
 
 Quadro do Trello:
 
 
 <img width="1874" height="807" alt="image" src="https://github.com/user-attachments/assets/25c2422a-1b54-4055-bea3-7c5a62dcf947" />
 
-
+Link: https://trello.com/invite/b/68ba1994247fd77c4b97330e/ATTI7be0f394a50570e8797d07f81edb1ffd148F30FD/quadro-bebidasstore
 
 
 
