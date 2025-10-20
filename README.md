@@ -395,13 +395,9 @@ python manage.py runserver
 7. Acompanhamento de pedidos
 
 
-## 📝 Licença
 
-Este projeto é um trabalho acadêmico desenvolvido para fins educacionais.
 
-## 👨‍💻 Autor
 
-**Lucas** - [chamanodias](https://github.com/chamanodias)
 
 ---
 
