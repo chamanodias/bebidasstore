@@ -1,3 +1,18 @@
+Protótipo no Figma:
+
+<img width="1441" height="762" alt="image" src="https://github.com/user-attachments/assets/fe44522d-e753-4e8b-a6f0-2d855366eef3" />
+
+Link: https://www.figma.com/make/EQqmLPGEOOzRTAWDJGEbfO/Lo-Fi-Prototype-and-Storyboards?node-id=0-1&t=EOYvobnlCaKhZd0J-1
+
+Quadro do Trello:
+
+
+<img width="1874" height="807" alt="image" src="https://github.com/user-attachments/assets/25c2422a-1b54-4055-bea3-7c5a62dcf947" />
+
+Link: https://trello.com/invite/b/68ba1994247fd77c4b97330e/ATTI7be0f394a50570e8797d07f81edb1ffd148F30FD/quadro-bebidasstore
+
+
+
 # BebidasStore 🍷
 
 **Plataforma de E-commerce de Bebidas - Django | Projeto Acadêmico**
@@ -384,10 +399,36 @@ Sistema de Issues do GitHub configurado para rastreamento de bugs e funcionalida
 ### Como Visualizar as Funcionalidades
 **Execute o projeto localmente para ver todas as telas funcionando:**
 
+<<<<<<< HEAD
 ```bash
 python manage.py runserver
 # Acesse: http://127.0.0.1:8000/
 ```
+=======
+### Como Visualizar as Telas
+1. **Execute o servidor**: `python manage.py runserver`
+2. **Acesse**: http://127.0.0.1:8000/
+3. **Navegue pelas funcionalidades**:
+   - **Página Inicial**: http://127.0.0.1:8000/ - Banner hero + produtos em destaque
+   - **Lista de Produtos**: http://127.0.0.1:8000/produtos/ - Catálogo com filtros
+   - **Detalhes do Produto**: Clique em qualquer produto - Informações completas
+   - **Cadastro**: http://127.0.0.1:8000/cadastro/ - Formulário de registro
+   - **Login**: http://127.0.0.1:8000/accounts/login/ - Autenticação
+   - **Carrinho**: http://127.0.0.1:8000/carrinho/ - Gestão de itens
+   - **Admin**: http://127.0.0.1:8000/admin/ - admin/admin123
+
+### Funcionalidades Visuais Implementadas
+- ✅ **Design Responsivo** com Bootstrap 5.3
+- ✅ **Interface Moderna** com ícones Bootstrap Icons
+- ✅ **Paleta de Cores Consistente** (roxo #7C3AED como primária)
+- ✅ **Animações CSS** em hover dos produtos
+- ✅ **Navegação Intuitiva** com breadcrumbs
+- ✅ **Formulários Validados** com feedback visual
+- ✅ **Cards Responsivos** para produtos
+- ✅ **Progress Bars** para status de pedidos
+
+
+>>>>>>> 918c9f1d4b3c5c5c47f744c07cd1a5162e66001a
 
 
 ---
