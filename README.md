@@ -1,3 +1,15 @@
+O Projeto em si:
+
+<img width="1876" height="897" alt="Captura de tela 2025-10-20 180722" src="https://github.com/user-attachments/assets/46a32ef3-4158-48a8-a45d-f1bee336e0d4" />
+
+
+Screencast: 
+
+
+
+
+
+
 Protótipo no Figma:
 
 <img width="1441" height="762" alt="image" src="https://github.com/user-attachments/assets/fe44522d-e753-4e8b-a6f0-2d855366eef3" />
