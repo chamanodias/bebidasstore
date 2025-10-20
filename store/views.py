@@ -28,12 +28,53 @@ def product_list(request):
     categories = Category.objects.all()
     
     # Filtros
-    category_filter = request.GET.get('category')
-    alcohol_filter = request.GET.get('alcohol_type')
-    search_query = request.GET.get('search')
+    category_filter = request.GET.get('category', '')
+    alcohol_filter = request.GET.get('alcohol_type', '')
+    search_query = request.GET.get('search', '')
     
+    # Limpar valores 'None' que podem vir da URL
+    if category_filter == 'None' or not category_filter:
+        category_filter = ''
+    if alcohol_filter == 'None' or not alcohol_filter:
+        alcohol_filter = ''
+    if search_query == 'None' or not search_query:
+        search_query = ''
+    
+    # Aplicar filtros apenas se tiverem valor
     if category_filter:
         products = products.filter(category__slug=category_filter)
+    
+    if alcohol_filter:
+        products = products.filter(alcohol_type=alcohol_filter)
+    
+    if search_query:
+        products = products.filter(
+            Q(name__icontains=search_query) |
+            Q(description__icontains=search_query)
+        )
+    
+    # Ordenar produtos
+    products = products.order_by('-featured', '-created_at')
+    
+    context = {
+        'products': products,
+        'categories': categories,
+        'current_category': category_filter,
+        'current_alcohol_type': alcohol_filter,
+        'search_query': search_query,
+        'alcohol_choices': Product.ALCOHOL_CHOICES,
+    }
+    return render(request, 'store/product_list.html', context)
+
+def category_products(request, slug):
+    """Produtos filtrados por categoria"""
+    category = get_object_or_404(Category, slug=slug)
+    products = Product.objects.filter(category=category, available=True)
+    categories = Category.objects.all()
+    
+    # Filtros adicionais
+    alcohol_filter = request.GET.get('alcohol_type')
+    search_query = request.GET.get('search')
     
     if alcohol_filter:
         products = products.filter(alcohol_type=alcohol_filter)
@@ -47,10 +88,11 @@ def product_list(request):
     context = {
         'products': products,
         'categories': categories,
-        'current_category': category_filter,
+        'current_category': category,
         'current_alcohol_type': alcohol_filter,
         'search_query': search_query,
         'alcohol_choices': Product.ALCOHOL_CHOICES,
+        'category': category,
     }
     return render(request, 'store/product_list.html', context)
 

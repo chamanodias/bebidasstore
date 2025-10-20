@@ -7,14 +7,21 @@
     <div class="row">
         <div class="col-12 mb-4">
             <h1>
-                {% if current_alcohol_type %}
-                    {{ current_alcohol_type|capfirst }}
-                {% elif search_query %}
+                {% if category %}
+                    {{ category.name }}
+                {% elif current_alcohol_type and current_alcohol_type != 'None' %}
+                    {% for value, display in alcohol_choices %}
+                        {% if value == current_alcohol_type %}{{ display }}{% endif %}
+                    {% endfor %}
+                {% elif search_query and search_query != 'None' %}
                     Resultados para "{{ search_query }}"
                 {% else %}
                     Todos os Produtos
                 {% endif %}
             </h1>
+            {% if category %}
+                <p class="text-muted">{{ category.description }}</p>
+            {% endif %}
             <hr>
         </div>
     </div>
@@ -34,7 +41,8 @@
                         <div class="mb-3">
                             <label class="form-label">Buscar</label>
                             <input type="text" class="form-control" name="search" 
-                                   value="{{ search_query }}" placeholder="Nome do produto...">
+                                   value="{% if search_query and search_query != 'None' %}{{ search_query }}{% endif %}" 
+                                   placeholder="Nome do produto...">
                         </div>
 
                         <!-- Tipo de Bebida -->

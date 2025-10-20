@@ -305,12 +305,17 @@ python manage.py createsuperuser
 python populate_db.py
 ```
 
-7. **Inicie o servidor:**
+7. **Colete os arquivos estáticos:**
+```bash
+python manage.py collectstatic
+```
+
+8. **Inicie o servidor:**
 ```bash
 python manage.py runserver
 ```
 
-8. **Acesse a aplicação:**
+9. **Acesse a aplicação:**
 - Site: http://127.0.0.1:8000/
 - Admin: http://127.0.0.1:8000/admin/
 
@@ -383,20 +388,6 @@ Sistema de Issues do GitHub configurado para rastreamento de bugs e funcionalida
 python manage.py runserver
 # Acesse: http://127.0.0.1:8000/
 ```
-
-### Screencast do Protótipo
-**Roteiro para demonstração (5-7 minutos):**
-1. Página inicial com produtos em destaque
-2. Sistema de busca e filtros
-3. Detalhamento do produto
-4. Cadastro e login de usuário
-5. Carrinho de compras
-6. Processo de checkout
-7. Acompanhamento de pedidos
-
-
-
-
 
 
 ---

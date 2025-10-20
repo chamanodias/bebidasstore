@@ -9,6 +9,7 @@ urlpatterns = [
     
     # Produtos
     path('produtos/', views.product_list, name='product_list'),
+    path('categoria/<slug:slug>/', views.category_products, name='category_products'),
     path('produto/<slug:slug>/', views.product_detail, name='product_detail'),
     
     # Autenticação
