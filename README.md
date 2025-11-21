@@ -1,3 +1,36 @@
+<div align="center">
+
+  <h1>BebidasStore 🍷</h1>
+  <p>Plataforma de e-commerce de bebidas construída com Django</p>
+
+  <img width="900" alt="Preview BebidasStore" src="https://github.com/user-attachments/assets/46a32ef3-4158-48a8-a45d-f1bee336e0d4" />
+
+  <br/>
+
+  <a href="https://img.shields.io/badge/Python-3.13%2B-3776AB?logo=python&logoColor=white"><img src="https://img.shields.io/badge/Python-3.13%2B-3776AB?logo=python&logoColor=white" alt="Python"/></a>
+  <a href="https://img.shields.io/badge/Django-5.2.6-092E20?logo=django&logoColor=white"><img src="https://img.shields.io/badge/Django-5.2.6-092E20?logo=django&logoColor=white" alt="Django"/></a>
+  <img src="https://img.shields.io/badge/status-ativo-success" alt="Status"/>
+
+  <p>
+    <a href="https://drive.google.com/file/d/1qM-1I3npPe8azhYUNuKvYm5kBMdlzm91/view?usp=drive_link">🎬 Screencast</a>
+    •
+    <a href="https://www.figma.com/make/EQqmLPGEOOzRTAWDJGEbfO/Lo-Fi-Prototype-and-Storyboards?node-id=0-1&t=EOYvobnlCaKhZd0J-1">🎨 Protótipo no Figma</a>
+    •
+    <a href="https://trello.com/invite/b/68ba1994247fd77c4b97330e/ATTI7be0f394a50570e8797d07f81edb1ffd148F30FD/quadro-bebidasstore">🧭 Quadro do Trello</a>
+  </p>
+
+</div>
+
+## 📚 Sumário
+
+- [✨ Funcionalidades](#-funcionalidades)
+- [🛠️ Tecnologias](#️-tecnologias-utilizadas)
+- [📁 Estrutura](#-estrutura-do-projeto)
+- [🚀 Como executar](#-como-executar)
+- [🖼️ Telas e protótipos](#-protótipos-lo-fi)
+- [📊 Sprint e métricas](#-sprint-backlog---entrega-02)
+- [🎯 Backlog](#-próximas-funcionalidades-backlog)
+
 O Projeto em si:
 
 <img width="1876" height="897" alt="Captura de tela 2025-10-20 180722" src="https://github.com/user-attachments/assets/46a32ef3-4158-48a8-a45d-f1bee336e0d4" />
@@ -310,44 +343,36 @@ source venv/bin/activate
 
 3. **Instale as dependências:**
 ```bash
-pip install django pillow psycopg2-binary
+pip install -r requirements.txt
 ```
 
-4. **Configure o banco de dados:**
+4. **Prepare o banco de dados:**
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-5. **Crie um superusuário:**
+5. **Crie um superusuário (opcional para acessar o admin):**
 ```bash
 python manage.py createsuperuser
 ```
 
-6. **Popule o banco com dados de exemplo:**
-```bash
-python populate_db.py
-```
-
-7. **Colete os arquivos estáticos:**
-```bash
-python manage.py collectstatic
-```
-
-8. **Inicie o servidor:**
+6. **Inicie o servidor:**
 ```bash
 python manage.py runserver
 ```
 
-9. **Acesse a aplicação:**
+7. **Acesse a aplicação:**
 - Site: http://127.0.0.1:8000/
 - Admin: http://127.0.0.1:8000/admin/
 
-## 🔐 Usuários de Teste
+## 🧪 Testes
 
-### Administrador
-- **Usuário:** admin
-- **Senha:** admin123
+Execute os testes com:
+
+```bash
+python manage.py test
+```
 
 ## 📊 Sprint Backlog - Entrega 02
 
