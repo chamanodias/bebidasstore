@@ -16,8 +16,9 @@
     •
     <a href="https://www.figma.com/make/EQqmLPGEOOzRTAWDJGEbfO/Lo-Fi-Prototype-and-Storyboards?node-id=0-1&t=EOYvobnlCaKhZd0J-1">🎨 Protótipo no Figma</a>
     •
-    <a href="![Uploading Captura de tela 2025-11-20 225004.png…]()
-">🧭 Quadro do Trello</a>
+    
+">🧭 Quadro do Trello</a><img width="1903" height="849" alt="Captura de tela 2025-11-20 230055" src="https://github.com/user-attachments/assets/78e97000-42ed-4dc6-9eba-3bdddaf9e034" />
+
   </p>
 
 </div>
