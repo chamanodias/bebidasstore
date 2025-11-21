@@ -18,8 +18,8 @@ urlpatterns = [
     # Carrinho
     path('carrinho/', views.cart_detail, name='cart_detail'),
     path('adicionar-ao-carrinho/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
-    path('atualizar-carrinho/<int:item_id>/', views.update_cart_item, name='update_cart_item'),
-    path('remover-do-carrinho/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
+    path('atualizar-carrinho/<int:product_id>/', views.update_cart_item, name='update_cart_item'),
+    path('remover-do-carrinho/<int:product_id>/', views.remove_from_cart, name='remove_from_cart'),
     
     # Checkout e Pedidos
     path('checkout/', views.checkout, name='checkout'),

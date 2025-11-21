@@ -26,19 +26,19 @@
                             <div class="col-md-6 mb-3">
                                 <label for="first_name" class="form-label">Nome</label>
                                 <input type="text" class="form-control" id="first_name" name="first_name" 
-                                       value="{{ user.first_name }}" required>
+                                       required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="last_name" class="form-label">Sobrenome</label>
                                 <input type="text" class="form-control" id="last_name" name="last_name" 
-                                       value="{{ user.last_name }}" required>
+                                       required>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" 
-                                   value="{{ user.email }}" required>
+                                   required>
                         </div>
 
                         <div class="mb-3">
@@ -77,13 +77,13 @@
                 </div>
                 <div class="card-body">
                     <!-- Itens do Carrinho -->
-                    {% for item in cart.items.all %}
+                    {% for item in cart_items %}
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <div>
-                                <h6 class="mb-0">{{ item.product.name }}</h6>
-                                <small class="text-muted">{{ item.quantity }}x R$ {{ item.product.price }}</small>
+                                <h6 class="mb-0">{{ item.name }}</h6>
+                                <small class="text-muted">{{ item.quantity }}x R$ {{ item.price }}</small>
                             </div>
-                            <span class="text-success">R$ {{ item.get_total_price }}</span>
+                            <span class="text-success">R$ {{ item.subtotal }}</span>
                         </div>
                     {% endfor %}
 
@@ -91,8 +91,8 @@
 
                     <!-- Totais -->
                     <div class="d-flex justify-content-between mb-2">
-                        <span>Subtotal ({{ cart.get_total_items }} itens)</span>
-                        <span>R$ {{ cart.get_total_price }}</span>
+                        <span>Subtotal ({{ cart_total_items }} itens)</span>
+                        <span>R$ {{ cart_total }}</span>
                     </div>
 
                     <div class="d-flex justify-content-between mb-2">
@@ -104,7 +104,7 @@
 
                     <div class="d-flex justify-content-between">
                         <strong>Total</strong>
-                        <strong class="text-primary h5">R$ {{ cart.get_total_price }}</strong>
+                        <strong class="text-primary h5">R$ {{ cart_total }}</strong>
                     </div>
                 </div>
             </div>

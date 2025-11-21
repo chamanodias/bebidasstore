@@ -23,12 +23,12 @@
                                     <i class="bi bi-receipt me-2"></i>Pedido #{{ order.order_number }}
                                 </h5>
                                 <small class="text-muted">
-                                    Realizado em {{ order.created_at|date:"d/m/Y à\s H:i" }}
+                                    Realizado em {{ order.created_at_str }}
                                 </small>
                             </div>
                             <div class="text-end">
                                 <span class="badge bg-{% if order.status == 'confirmado' %}success{% elif order.status == 'processando' %}warning{% elif order.status == 'enviado' %}info{% elif order.status == 'entregue' %}success{% elif order.status == 'cancelado' %}danger{% else %}secondary{% endif %} fs-6">
-                                    {{ order.get_status_display }}
+                                    {{ order.status|title }}
                                 </span>
                             </div>
                         </div>
@@ -37,28 +37,28 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <!-- Resumo dos Itens -->
-                                    <h6><i class="bi bi-box me-2"></i>Itens do Pedido ({{ order.items.count }})</h6>
+                                    <h6><i class="bi bi-box me-2"></i>Itens do Pedido ({{ order.items|length }})</h6>
                                     
                                     <div class="row">
-                                        {% for item in order.items.all|slice:":4" %}
+                                        {% for item in order.items|slice:":4" %}
                                             <div class="col-md-6 mb-2">
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-grow-1">
-                                                        <strong class="small">{{ item.product.name }}</strong><br>
+                                                        <strong class="small">{{ item.name }}</strong><br>
                                                         <small class="text-muted">{{ item.quantity }}x R$ {{ item.price }}</small>
                                                     </div>
                                                     <div class="text-end">
-                                                        <span class="text-success small">R$ {{ item.get_total_price }}</span>
+                                                        <span class="text-success small">R$ {{ item.subtotal }}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         {% endfor %}
                                     </div>
                                     
-                                    {% if order.items.count > 4 %}
+                                    {% if order.items|length > 4 %}
                                         <small class="text-muted">
                                             <i class="bi bi-three-dots me-1"></i>
-                                            e mais {{ order.items.count|add:"-4" }} item{{ order.items.count|add:"-4"|pluralize }}
+                                            e mais {{ order.items|length|add:"-4" }} item{% if order.items|length > 5 %}s{% endif %}
                                         </small>
                                     {% endif %}
                                 </div>
@@ -149,17 +149,17 @@
                         <div class="row text-center">
                             <div class="col-md-3">
                                 <i class="bi bi-receipt fs-1 text-primary mb-2"></i>
-                                <h5>{{ orders.count }}</h5>
+                                <h5>{{ total_orders }}</h5>
                                 <small class="text-muted">Total de Pedidos</small>
                             </div>
                             <div class="col-md-3">
                                 <i class="bi bi-currency-dollar fs-1 text-success mb-2"></i>
-                                <h5>R$ {% widthratio orders.count 1 500 %}</h5>
+                                <h5>R$ {{ total_spent }}</h5>
                                 <small class="text-muted">Total Gasto</small>
                             </div>
                             <div class="col-md-3">
                                 <i class="bi bi-truck fs-1 text-info mb-2"></i>
-                                <h5>{% for order in orders %}{% if order.status == 'entregue' %}{{ forloop.counter }}{% endif %}{% empty %}0{% endfor %}</h5>
+                                <h5>{{ delivered_count }}</h5>
                                 <small class="text-muted">Pedidos Entregues</small>
                             </div>
                             <div class="col-md-3">

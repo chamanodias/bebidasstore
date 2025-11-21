@@ -11,17 +11,17 @@
         </div>
     </div>
 
-    {% if cart.items.all %}
+    {% if cart_items %}
         <div class="row">
             <div class="col-lg-8">
                 <!-- Itens do Carrinho -->
-                {% for item in cart.items.all %}
+                {% for item in cart_items %}
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-3">
-                                {% if item.product.image %}
-                                    <img src="{{ item.product.image.url }}" class="img-fluid rounded-start h-100" 
-                                         alt="{{ item.product.name }}" style="object-fit: cover;">
+                                {% if item.image_url %}
+                                    <img src="{{ item.image_url }}" class="img-fluid rounded-start h-100" 
+                                         alt="{{ item.name }}" style="object-fit: cover;">
                                 {% else %}
                                     <div class="bg-light h-100 d-flex align-items-center justify-content-center rounded-start">
                                         <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
@@ -32,35 +32,37 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <h5 class="card-title">{{ item.product.name }}</h5>
-                                            <p class="card-text">{{ item.product.description|truncatewords:15 }}</p>
+                                            <h5 class="card-title">{{ item.name }}</h5>
+                                            <p class="card-text">{{ item.description|truncatewords:15 }}</p>
                                             <div class="mb-2">
-                                                <span class="badge bg-secondary">{{ item.product.get_alcohol_type_display }}</span>
-                                                {% if item.product.volume %}
-                                                    <span class="text-muted ms-2">{{ item.product.volume }}</span>
+                                                {% if item.alcohol_type_display %}
+                                                    <span class="badge bg-secondary">{{ item.alcohol_type_display }}</span>
+                                                {% endif %}
+                                                {% if item.volume %}
+                                                    <span class="text-muted ms-2">{{ item.volume }}</span>
                                                 {% endif %}
                                             </div>
                                         </div>
                                         <div class="col-md-4 text-end">
                                             <div class="mb-3">
-                                                <span class="h5 text-primary">R$ {{ item.product.price }}</span>
+                                                <span class="h5 text-primary">R$ {{ item.price }}</span>
                                                 <small class="text-muted d-block">Preço unitário</small>
                                             </div>
 
                                             <!-- Formulário de Quantidade -->
-                                            <form method="post" action="{% url 'store:update_cart_item' item.id %}" class="d-inline-block mb-2">
+                                            <form method="post" action="{% url 'store:update_cart_item' item.product_id %}" class="d-inline-block mb-2">
                                                 {% csrf_token %}
                                                 <div class="input-group input-group-sm" style="width: 120px;">
-                                                    <button type="button" class="btn btn-outline-secondary" onclick="decreaseQuantity({{ item.id }})">-</button>
-                                                    <input type="number" name="quantity" id="quantity-{{ item.id }}" 
+                                                    <button type="button" class="btn btn-outline-secondary" onclick="decreaseQuantity({{ item.product_id }})">-</button>
+                                                    <input type="number" name="quantity" id="quantity-{{ item.product_id }}" 
                                                            value="{{ item.quantity }}" min="1" max="10" 
-                                                           class="form-control text-center" onchange="updateQuantity({{ item.id }})">
-                                                    <button type="button" class="btn btn-outline-secondary" onclick="increaseQuantity({{ item.id }})">+</button>
+                                                           class="form-control text-center" onchange="updateQuantity({{ item.product_id }})">
+                                                    <button type="button" class="btn btn-outline-secondary" onclick="increaseQuantity({{ item.product_id }})">+</button>
                                                 </div>
                                             </form>
 
                                             <!-- Remover Item -->
-                                            <form method="post" action="{% url 'store:remove_from_cart' item.id %}" class="d-inline-block">
+                                            <form method="post" action="{% url 'store:remove_from_cart' item.product_id %}" class="d-inline-block">
                                                 {% csrf_token %}
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" 
                                                         onclick="return confirm('Deseja remover este item do carrinho?')">
@@ -70,7 +72,7 @@
 
                                             <div class="mt-2">
                                                 <strong class="text-success">
-                                                    Subtotal: R$ {{ item.get_total_price }}
+                                                    Subtotal: R$ {{ item.subtotal }}
                                                 </strong>
                                             </div>
                                         </div>
@@ -92,8 +94,8 @@
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3">
-                            <span>Itens ({{ cart.get_total_items }})</span>
-                            <span>R$ {{ cart.get_total_price }}</span>
+                            <span>Itens ({{ cart_total_items }})</span>
+                            <span>R$ {{ cart_total }}</span>
                         </div>
                         
                         <div class="d-flex justify-content-between mb-3">
@@ -105,20 +107,13 @@
                         
                         <div class="d-flex justify-content-between mb-4">
                             <strong>Total</strong>
-                            <strong class="text-primary h4">R$ {{ cart.get_total_price }}</strong>
+                            <strong class="text-primary h4">R$ {{ cart_total }}</strong>
                         </div>
 
                         <div class="d-grid gap-2">
-                            {% if user.is_authenticated %}
-                                <a href="{% url 'store:checkout' %}" class="btn btn-primary btn-lg">
-                                    <i class="bi bi-credit-card me-2"></i>Finalizar Compra
-                                </a>
-                            {% else %}
-                                <a href="{% url 'login' %}?next={% url 'store:checkout' %}" class="btn btn-primary btn-lg">
-                                    <i class="bi bi-box-arrow-in-right me-2"></i>Entre para Finalizar
-                                </a>
-                                <small class="text-muted text-center">É necessário estar logado para finalizar a compra</small>
-                            {% endif %}
+                            <a href="{% url 'store:checkout' %}" class="btn btn-primary btn-lg">
+                                <i class="bi bi-credit-card me-2"></i>Finalizar Compra
+                            </a>
                             
                             <a href="{% url 'store:product_list' %}" class="btn btn-outline-secondary">
                                 <i class="bi bi-arrow-left me-1"></i>Continuar Comprando

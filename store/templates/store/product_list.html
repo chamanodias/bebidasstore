@@ -91,8 +91,8 @@
                     {% for product in products %}
                         <div class="col-md-4 mb-4">
                             <div class="card product-card h-100 border-0 shadow-sm">
-                                {% if product.image %}
-                                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" 
+                                {% if product.image_url %}
+                                    <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}" 
                                          style="height: 200px; object-fit: cover;">
                                 {% else %}
                                     <div class="card-img-top bg-light d-flex align-items-center justify-content-center" 
@@ -114,7 +114,7 @@
                                                 {% endif %}
                                             </div>
                                             <div>
-                                                <span class="badge bg-secondary mb-1">{{ product.get_alcohol_type_display }}</span>
+                                                <span class="badge bg-secondary mb-1">{{ product.alcohol_type_display }}</span>
                                                 {% if product.featured %}
                                                     <br><span class="badge bg-warning text-dark">
                                                         <i class="bi bi-star-fill me-1"></i>Destaque
@@ -125,7 +125,7 @@
 
                                         {% if product.stock > 0 %}
                                             <div class="d-grid gap-2">
-                                                <a href="{{ product.get_absolute_url }}" class="btn btn-outline-primary">
+                                                <a href="{% url 'store:product_detail' slug=product.slug %}" class="btn btn-outline-primary">
                                                     <i class="bi bi-eye me-1"></i>Ver Detalhes
                                                 </a>
                                                 
@@ -141,7 +141,7 @@
                                             <div class="alert alert-warning text-center mb-2">
                                                 <small><i class="bi bi-exclamation-triangle me-1"></i>Esgotado</small>
                                             </div>
-                                            <a href="{{ product.get_absolute_url }}" class="btn btn-outline-primary w-100">
+                                            <a href="{% url 'store:product_detail' slug=product.slug %}" class="btn btn-outline-primary w-100">
                                                 <i class="bi bi-eye me-1"></i>Ver Detalhes
                                             </a>
                                         {% endif %}
