@@ -3,7 +3,6 @@
   <h1>BebidasStore 🍷</h1>
   <p>Plataforma de e-commerce de bebidas construída com Django</p>
 
-  <img width="900" alt="Preview BebidasStore" src="https://github.com/user-attachments/assets/46a32ef3-4158-48a8-a45d-f1bee336e0d4" />
 
   <br/>
 
@@ -17,7 +16,8 @@
     <a href="https://www.figma.com/make/EQqmLPGEOOzRTAWDJGEbfO/Lo-Fi-Prototype-and-Storyboards?node-id=0-1&t=EOYvobnlCaKhZd0J-1">🎨 Protótipo no Figma</a>
     •
     
-">🧭 Quadro do Trello</a><img width="1903" height="849" alt="Captura de tela 2025-11-20 230055" src="https://github.com/user-attachments/assets/78e97000-42ed-4dc6-9eba-3bdddaf9e034" />
+">🧭 Quadro do Trello</a><img width="1903" height="849" alt="Captura de tela 2025-11-20 230055" src="<img width="1903" height="849" alt="image" src="https://github.com/user-attachments/assets/05254c08-1a73-4295-86da-86ea7d24f770" />
+" />
 
   </p>
 
