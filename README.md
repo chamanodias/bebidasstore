@@ -16,7 +16,8 @@
     •
     <a href="https://www.figma.com/make/EQqmLPGEOOzRTAWDJGEbfO/Lo-Fi-Prototype-and-Storyboards?node-id=0-1&t=EOYvobnlCaKhZd0J-1">🎨 Protótipo no Figma</a>
     •
-    <a href="https://trello.com/invite/b/68ba1994247fd77c4b97330e/ATTI7be0f394a50570e8797d07f81edb1ffd148F30FD/quadro-bebidasstore">🧭 Quadro do Trello</a>
+    <a href="![Uploading Captura de tela 2025-11-20 225004.png…]()
+">🧭 Quadro do Trello</a>
   </p>
 
 </div>
