@@ -16,8 +16,7 @@
     <a href="https://www.figma.com/make/EQqmLPGEOOzRTAWDJGEbfO/Lo-Fi-Prototype-and-Storyboards?node-id=0-1&t=EOYvobnlCaKhZd0J-1">🎨 Protótipo no Figma</a>
     •
     
-">🧭 Quadro do Trello</a><img width="1903" height="849" alt="Captura de tela 2025-11-20 230055" src="<img width="1903" height="849" alt="image" src="https://github.com/user-attachments/assets/05254c08-1a73-4295-86da-86ea7d24f770" />
-" />
+
 
   </p>
 
@@ -50,7 +49,8 @@ Link: https://www.figma.com/make/EQqmLPGEOOzRTAWDJGEbfO/Lo-Fi-Prototype-and-Stor
 Quadro do Trello:
 
 
-<img width="1894" height="864" alt="image" src="https://github.com/user-attachments/assets/c0b778ec-29b1-4e91-824c-1494c1b9babc" />
+<<img width="1903" height="849" alt="image" src="https://github.com/user-attachments/assets/e426cb1d-30ac-4c6b-8dec-e5d59e08e8aa" />
+" />
 
 
 Link: https://trello.com/invite/b/68ba1994247fd77c4b97330e/ATTI7be0f394a50570e8797d07f81edb1ffd148F30FD/quadro-bebidasstore
